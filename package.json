@@ -1,6 +1,6 @@
 {
-  "homepage": "https://talentforest.github.io/nomad-react-masterclass/",
-  "name": "nomad-react-masterclass",
+  "homepage": "https://talentforest.github.io/crypto-tracker",
+  "name": "crypto-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
