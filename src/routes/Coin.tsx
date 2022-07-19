@@ -1,10 +1,10 @@
-import { useQuery } from 'react-query';
-import { Helmet } from "react-helmet-async"
+import { useQuery } from "react-query";
+import { Helmet } from "react-helmet-async";
 import { useLocation, useParams } from "react-router";
-import { Routes, Route, Link, useMatch } from 'react-router-dom';
-import { fetchCoinInfo, fetchCoinTickers } from '../api';
+import { Routes, Route, Link, useMatch } from "react-router-dom";
+import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
-import Price from "./Price"
+import Price from "./Price";
 import styled from "styled-components";
 
 interface RouteParams {
@@ -31,7 +31,7 @@ export default function Coin() {
       refetchInterval: 5000,
     }
   );
-  const loading = infoLoading || tickersLoading
+  const loading = infoLoading || tickersLoading;
 
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
@@ -40,14 +40,12 @@ export default function Coin() {
     <Container>
       <Helmet>
         <title>
-          {state?.name ? state.name : loading ?
-            "Loading..." : infoData?.name}
+          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
       <Header>
         <Title>
-          {state?.name ? state.name : loading ?
-            "Loading..." : infoData?.name}
+          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
       </Header>
       {loading ? (
@@ -79,7 +77,6 @@ export default function Coin() {
               <span>{tickersData?.max_supply}</span>
             </OverviewItem>
           </Overview>
-
           <Tabs>
             <Tab isActive={chartMatch !== null}>
               <Link to={"chart"}>Chart</Link>
@@ -88,18 +85,17 @@ export default function Coin() {
               <Link to={"price"}>Price</Link>
             </Tab>
           </Tabs>
-
           <Routes>
             <Route path="chart" element={<Chart coinId={coinId} />} />
-            <Route path="price" element={<Price coinId={coinId} tickersData={tickersData} />} />
+            <Route
+              path="price"
+              element={<Price coinId={coinId} tickersData={tickersData} />}
+            />
           </Routes>
 
           <BackBtn>
-            <Link to={`/`}>
-              Back
-            </Link>
+            <Link to={`/`}>Back</Link>
           </BackBtn>
-
         </>
       )}
     </Container>
@@ -172,7 +168,7 @@ const Tab = styled.span<{ isActive: boolean }>`
     padding: 7px 0px;
     display: block;
     color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+      props.isActive ? props.theme.accentColor : props.theme.textColor};
   }
 `;
 
@@ -194,7 +190,5 @@ const BackBtn = styled.div`
     &:hover {
       background-color: ${(props) => props.theme.textColor};
     }
-
   }
-`
-
+`;
